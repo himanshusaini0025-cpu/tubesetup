@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube Comment Reply Generator: Free Reply Ideas | TubeSetup</title>
+<meta name="description" content="Free YouTube comment reply generator. Paste a comment and get natural reply suggestions that match whether it is praise, criticism, a question or feedback, in your tone and language.">
+<meta property="og:title" content="YouTube Comment Reply Generator: Free Reply Ideas | TubeSetup">
+<meta property="og:description" content="Free YouTube comment reply generator. Paste a comment and get natural reply suggestions that match whether it is praise, criticism, a question or feedback, in your tone and language.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TubeSetup">
+<meta name="theme-color" content="#ff2d55">
+<script>
+  /* Apply the saved theme before first paint so dark-mode visitors don't see a white flash. */
+  (function(){try{if(localStorage.getItem('tubesetup-theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
+</script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23FF2D55%22/><path d=%22M40 32 L68 50 L40 68 Z%22 fill=%22white%22/></svg>">
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg-soft:#eef1f8;
+    --surface:#ffffff;
+    --border:#e7e9f2;
+    --text:#14162b;
+    --text-muted:#6b7086;
+    --text-faint:#9296a8;
+    --brand:#ff2d55;
+    --brand-dark:#e01e46;
+    --brand-soft:#ffe4ea;
+    --purple:#7b5cff;
+    --purple-soft:#efeaff;
+    --blue:#2f6feb;
+    --blue-soft:#e7f0ff;
+    --green:#17b26a;
+    --green-soft:#e3faee;
+    --pink-chip:#ffeef1;
+    --shadow-lg: 0 24px 60px -20px rgba(20,22,43,0.16);
+    --shadow-sm: 0 2px 8px rgba(20,22,43,0.05);
+    --radius-lg: 22px;
+    --radius-md: 14px;
+    --radius-sm: 10px;
+  }
+  [data-theme="dark"]{
+    --bg:#0d0e1a;
+    --bg-soft:#121322;
+    --surface:#161829;
+    --border:#252740;
+    --text:#f2f3f9;
+    --text-muted:#a4a7c1;
+    --text-faint:#767a99;
+    --brand:#ff3b62;
+    --brand-dark:#ff5678;
+    --brand-soft:#33111c;
+    --purple:#9d85ff;
+    --purple-soft:#221c3d;
+    --blue:#5b8def;
+    --blue-soft:#151d33;
+    --green:#31d38a;
+    --green-soft:#0f2a1f;
+    --pink-chip:#2a1620;
+    --shadow-lg: 0 24px 60px -20px rgba(0,0,0,0.55);
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    transition:background .3s ease,color .3s ease;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;}
+  button{font-family:inherit;cursor:pointer;}
+  input,textarea,select{font-family:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- Header ---------- */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px;}
+  .brand{display:flex;align-items:center;gap:10px;}
+  .brand .mark{
+    width:38px;height:38px;border-radius:11px;background:linear-gradient(145deg,var(--brand),var(--brand-dark));
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 6px 14px -4px rgba(255,45,85,0.5);
+  }
+  .brand .mark svg{width:16px;height:16px;}
+  .brand .name{font-weight:800;font-size:18px;line-height:1.1;letter-spacing:-0.02em;}
+  .brand .sub{font-size:11px;color:var(--text-faint);font-weight:500;}
+  nav.links{display:flex;align-items:center;gap:36px;}
+  nav.links a{font-size:14.5px;font-weight:600;color:var(--text-muted);position:relative;padding-bottom:6px;transition:color .2s;}
+  nav.links a:hover{color:var(--text);}
+  nav.links a.active{color:var(--brand);}
+  nav.links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--brand);border-radius:2px;}
+  .nav-right{display:flex;align-items:center;gap:14px;}
+  .theme-toggle{
+    display:flex;align-items:center;gap:2px;background:var(--surface);border:1px solid var(--border);
+    border-radius:999px;padding:4px;box-shadow:var(--shadow-sm);
+  }
+  .theme-toggle button{
+    width:30px;height:30px;border-radius:999px;border:none;background:transparent;display:flex;align-items:center;justify-content:center;color:var(--text-faint);transition:.2s;
+  }
+  .theme-toggle button.active{background:var(--text);color:var(--bg);}
+  .theme-toggle svg{width:15px;height:15px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;border:none;border-radius:999px;font-weight:700;font-size:14.5px;
+    padding:11px 20px;transition:transform .15s ease, box-shadow .15s ease, background .2s;
+  }
+  .btn:active{transform:scale(.97);}
+  .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand-dark));color:#fff;box-shadow:0 10px 20px -8px rgba(255,45,85,0.55);}
+  .btn-primary:hover{box-shadow:0 14px 26px -8px rgba(255,45,85,0.65);transform:translateY(-1px);}
+  .menu-toggle{display:none;background:none;border:none;color:var(--text);padding:4px;}
+  /* These were <button>s (now real links so they can be opened in a new tab). Keep their old metrics. */
+  a.btn-back, a.tab, a.extra-card, a.blog-card, a.btn{text-decoration:none;}
+  a.btn{text-align:center;}
+  a.extra-card, a.blog-card{font:inherit;font-size:13.333px;line-height:normal;color:var(--text);}
+  a.blog-card{padding:1px 6px;}
+  .menu-toggle svg{width:24px;height:24px;}
+  .mobile-menu{display:none;flex-direction:column;gap:2px;padding:8px 24px 18px;border-bottom:1px solid var(--border);background:var(--bg);}
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{padding:10px 4px;font-weight:600;font-size:15px;color:var(--text-muted);border-radius:8px;}
+  .mobile-menu a.active{color:var(--brand);}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:64px 0 40px;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 0.85fr;gap:40px;align-items:center;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:6px;background:var(--brand-soft);color:var(--brand-dark);
+    font-size:12.5px;font-weight:700;padding:7px 14px;border-radius:999px;margin-bottom:20px;
+  }
+  [data-theme="dark"] .eyebrow{color:var(--brand);}
+  .eyebrow svg{width:13px;height:13px;}
+  h1.headline{
+    font-size:47px;line-height:1.08;font-weight:800;letter-spacing:-0.025em;margin:0 0 18px;
+  }
+  h1.headline .accent{color:var(--brand);}
+  .hero-copy{font-size:16.5px;line-height:1.65;color:var(--text-muted);max-width:480px;margin:0 0 26px;}
+  .trust-row{display:flex;flex-wrap:wrap;gap:22px;}
+  .trust-item{display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;color:var(--text);}
+  .trust-item .dot{
+    width:19px;height:19px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .trust-item .dot svg{width:10px;height:10px;stroke:#fff;}
+
+  .hero-art{position:relative;display:flex;justify-content:center;align-items:center;min-height:280px;}
+  .art-blob{
+    position:absolute;inset:0;margin:auto;width:340px;height:280px;border-radius:50%;
+    background:radial-gradient(circle at 40% 40%, var(--brand-soft), transparent 70%);
+    filter:blur(6px);
+  }
+  .art-card{
+    position:relative;background:var(--surface);border-radius:20px;padding:16px;box-shadow:var(--shadow-lg);
+    width:280px;border:1px solid var(--border);
+  }
+  .art-play{
+    background:linear-gradient(145deg,#1a1c2e,#0d0e1a);border-radius:14px;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+  }
+  .art-play::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 20%, rgba(255,45,85,0.25), transparent 60%);}
+  .art-play .btn-circle{
+    width:52px;height:52px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px -4px rgba(255,45,85,0.7);
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  .art-play .btn-circle svg{width:20px;height:20px;margin-left:2px;}
+  @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
+  .float-chip{
+    position:absolute;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:6px 12px;font-size:11.5px;font-weight:700;
+    box-shadow:var(--shadow-sm);animation:float 5s ease-in-out infinite;white-space:nowrap;
+  }
+  .float-chip.c1{top:-10px;left:-38px;color:var(--brand);animation-delay:0s;}
+  .float-chip.c2{bottom:38%;left:-56px;color:var(--blue);animation-delay:.6s;}
+  .float-chip.c3{bottom:6px;left:20px;color:var(--green);animation-delay:1.1s;}
+  .float-chip.c4{bottom:-14px;right:-44px;color:var(--purple);animation-delay:1.6s;}
+  .stat-card{
+    position:absolute;top:-26px;right:-34px;background:var(--surface);border:1px solid var(--border);border-radius:16px;
+    padding:12px;box-shadow:var(--shadow-lg);animation:float 6s ease-in-out infinite;
+  }
+  .stat-card svg{width:26px;height:26px;}
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
+  .sparkle{position:absolute;top:6px;left:56px;width:26px;height:26px;color:var(--brand);opacity:.7;animation:spin 6s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  /* ---------- Tool panel ---------- */
+  .panel{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);
+    margin-top:44px;overflow:hidden;
+  }
+  .tabs{display:flex;gap:4px;overflow-x:auto;padding:18px 22px 0;border-bottom:1px solid var(--border);}
+  .tab{
+    display:flex;align-items:center;gap:8px;padding:10px 6px 16px;font-size:14.5px;font-weight:700;color:var(--text-faint);
+    border-bottom:2.5px solid transparent;white-space:nowrap;position:relative;background:none;border-left:none;border-right:none;border-top:none;
+    transition:color .18s;
+  }
+  .tab:hover{color:var(--text);}
+  .tab.active{color:var(--brand);border-bottom-color:var(--brand);}
+  .tab .icon-dot{width:16px;height:16px;flex-shrink:0;}
+
+  .tool-panel{display:none;}
+  .tool-panel.active{display:block;animation:fadein .3s ease;}
+  @keyframes fadein{from{opacity:0;}to{opacity:1;}}
+
+  .panel-body{padding:28px 22px 30px;display:grid;grid-template-columns:1.55fr 1fr;gap:24px;}
+  .field-label{font-size:14px;font-weight:700;margin-bottom:8px;display:block;}
+  .field-label .req{color:var(--brand);}
+  .field-label .opt{color:var(--text-faint);font-weight:600;font-size:12px;}
+  .input-wrap{position:relative;margin-bottom:8px;}
+  .input-wrap svg.leading{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:17px;height:17px;color:var(--text-faint);pointer-events:none;}
+  .input-wrap input, .input-wrap textarea{
+    width:100%;border:1.5px solid var(--border);background:var(--bg-soft, var(--bg));border-radius:var(--radius-sm);padding:13px 14px 13px 40px;
+    font-size:14.5px;color:var(--text);outline:none;transition:border-color .2s, box-shadow .2s;resize:vertical;
+  }
+  [data-theme="dark"] .input-wrap input, [data-theme="dark"] .input-wrap textarea{background:#101223;}
+  .input-wrap textarea{padding-top:13px;min-height:90px;}
+  .input-wrap textarea + svg.leading{top:20px;transform:none;}
+  .input-wrap input::placeholder, .input-wrap textarea::placeholder{color:var(--text-faint);}
+  .input-wrap input:focus, .input-wrap textarea:focus{border-color:var(--brand);box-shadow:0 0 0 4px var(--brand-soft);}
+  .input-wrap.field-err input, .input-wrap.field-err textarea{border-color:var(--brand);box-shadow:0 0 0 4px var(--brand-soft);animation:shake .35s ease;}
+  @keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-5px);}75%{transform:translateX(5px);}}
+  .field-block{margin-bottom:18px;}
+  .error-text{color:var(--brand-dark);font-size:12.5px;font-weight:600;margin:6px 0 0;display:none;align-items:center;gap:5px;}
+  [data-theme="dark"] .error-text{color:var(--brand);}
+  .error-text.show{display:flex;}
+  .error-text svg{width:13px;height:13px;flex-shrink:0;}
+
+  .field-select select{
+    width:100%;border:1.5px solid var(--border);background:var(--bg-soft,var(--bg));border-radius:var(--radius-sm);
+    padding:12.5px 14px;font-size:14.5px;color:var(--text);outline:none;appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239296a8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 14px center;background-size:16px;padding-right:38px;cursor:pointer;
+    transition:border-color .2s, box-shadow .2s;
+  }
+  [data-theme="dark"] .field-select select{background-color:#101223;}
+  .field-select select:focus{border-color:var(--brand);box-shadow:0 0 0 4px var(--brand-soft);}
+
+  .actions-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:4px;}
+  .btn-generate{
+    background:linear-gradient(135deg,var(--brand),var(--brand-dark));color:#fff;padding:13px 26px;border-radius:12px;font-size:15px;
+    box-shadow:0 10px 22px -8px rgba(255,45,85,0.55);
+  }
+  .btn-generate svg{width:17px;height:17px;}
+  .btn-generate:disabled{opacity:.75;cursor:progress;box-shadow:none;transform:none;}
+  .btn-clear{background:none;color:var(--text-muted);font-weight:700;font-size:14.5px;display:flex;align-items:center;gap:6px;padding:10px 6px;}
+  .btn-clear svg{width:15px;height:15px;}
+  .btn-clear:hover{color:var(--text);}
+  .spin-ic{animation:spin .9s linear infinite;}
+
+  .example-box{
+    background:var(--pink-chip);border:1px solid color-mix(in srgb, var(--brand) 18%, var(--border));border-radius:var(--radius-md);
+    padding:20px;position:relative;align-self:start;
+  }
+  .example-title{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14.5px;color:var(--brand-dark);margin-bottom:14px;}
+  [data-theme="dark"] .example-title{color:var(--brand);}
+  .example-title svg{width:16px;height:16px;}
+  .example-chips{display:flex;flex-wrap:wrap;gap:9px;}
+  .chip{
+    background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:8px 15px;font-size:13px;font-weight:600;
+    color:var(--text);transition:.18s;
+  }
+  .chip:hover{border-color:var(--brand);color:var(--brand-dark);transform:translateY(-1px);box-shadow:var(--shadow-sm);}
+  .example-hint{font-size:12px;color:var(--text-faint);margin-top:16px;font-style:italic;text-align:right;}
+
+  /* results (pill style, tags/hashtags/keywords) */
+  .results{grid-column:1/-1;margin-top:6px;}
+  .results.hidden{display:none;}
+  .results-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px;padding-top:18px;border-top:1px solid var(--border);}
+  .results-title{font-weight:700;font-size:15px;display:flex;align-items:center;gap:8px;}
+  .results-title .count{color:var(--brand);}
+  .copy-all{
+    display:flex;align-items:center;gap:7px;background:var(--purple-soft);color:var(--purple);font-weight:700;font-size:13px;padding:9px 15px;border-radius:10px;
+  }
+  .copy-all svg{width:14px;height:14px;}
+  .copy-all.copied{background:var(--green-soft);color:var(--green);}
+  .more-row{display:flex;justify-content:center;margin-top:18px;}
+  .btn-more{
+    display:inline-flex;align-items:center;gap:8px;background:var(--purple-soft);color:var(--purple);border:1.5px solid transparent;
+    font-weight:700;font-size:14px;padding:11px 22px;border-radius:999px;transition:transform .15s ease,border-color .2s;
+  }
+  .btn-more svg{width:15px;height:15px;}
+  .btn-more:hover{border-color:var(--purple);transform:translateY(-1px);}
+  .btn-more:active{transform:scale(.97);}
+  .btn-more:disabled{opacity:.7;cursor:progress;transform:none;}
+  .btn-more.loading svg{animation:spin .7s linear infinite;}
+  .tag-cloud{display:flex;flex-wrap:wrap;gap:10px;}
+  .tag-pill{
+    display:inline-flex;align-items:center;gap:7px;background:var(--bg-soft, var(--bg));border:1px solid var(--border);border-radius:999px;
+    padding:8px 8px 8px 15px;font-size:13.5px;font-weight:600;animation:pop .35s ease backwards;cursor:pointer;transition:.15s;
+  }
+  [data-theme="dark"] .tag-pill{background:#101223;}
+  .tag-pill:hover{border-color:var(--brand);}
+  .tag-pill .copy-ic{
+    width:23px;height:23px;border-radius:50%;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--text-faint);
+  }
+  .tag-pill .copy-ic svg{width:11px;height:11px;}
+  .tag-pill.copied .copy-ic{background:var(--green);border-color:var(--green);color:#fff;}
+  @keyframes pop{from{opacity:0;transform:translateY(6px) scale(.94);}to{opacity:1;transform:translateY(0) scale(1);}}
+  .char-meta{font-size:12px;color:var(--text-faint);margin-top:14px;}
+
+  /* title list (rows) */
+  .title-list{display:flex;flex-direction:column;gap:10px;}
+  .title-row{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--bg-soft,var(--bg));
+    border:1px solid var(--border);border-radius:12px;padding:13px 14px;font-size:14px;font-weight:600;animation:pop .35s ease backwards;transition:.15s;
+  }
+  [data-theme="dark"] .title-row{background:#101223;}
+  .title-row:hover{border-color:var(--brand);}
+  .title-row span.txt{line-height:1.4;}
+  .title-row .copy-ic{
+    width:27px;height:27px;border-radius:50%;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--text-faint);cursor:pointer;
+  }
+  .title-row .copy-ic svg{width:12px;height:12px;}
+  .title-row.copied .copy-ic{background:var(--green);border-color:var(--green);color:#fff;}
+
+  /* description output */
+  .desc-output{
+    width:100%;min-height:230px;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:16px;font-size:14px;
+    line-height:1.7;color:var(--text);background:var(--bg-soft,var(--bg));white-space:pre-wrap;font-family:inherit;resize:vertical;
+  }
+  [data-theme="dark"] .desc-output{background:#101223;}
+  .desc-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:12px;}
+
+  /* loading skeleton */
+  .skeleton-row{height:16px;border-radius:8px;background:linear-gradient(90deg, var(--border) 25%, color-mix(in srgb, var(--border) 50%, transparent) 50%, var(--border) 75%);background-size:200% 100%;animation:shimmer 1.3s ease-in-out infinite;}
+  @keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+
+  /* ---------- Features ---------- */
+  .features{padding:70px 0 30px;}
+  .feat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;}
+  .feat{text-align:left;}
+  .feat .ic{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .feat .ic svg{width:20px;height:20px;}
+  .feat h3{font-size:16px;margin:0 0 6px;font-weight:700;}
+  .feat p{font-size:13.5px;color:var(--text-muted);line-height:1.55;margin:0;}
+  .ic.bg-blue{background:var(--blue-soft);color:var(--blue);}
+  .ic.bg-purple{background:var(--purple-soft);color:var(--purple);}
+  .ic.bg-green{background:var(--green-soft);color:var(--green);}
+  .ic.bg-pink{background:var(--brand-soft);color:var(--brand);}
+  .ic.bg-indigo{background:var(--purple-soft);color:var(--purple);}
+
+  /* ---------- How it works ---------- */
+  .how{background:var(--bg-soft, var(--bg));padding:78px 0;margin-top:20px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+  [data-theme="dark"] .how{background:#101223;}
+  .section-head{text-align:center;margin-bottom:50px;}
+  .section-head h2{font-size:30px;font-weight:800;margin:0 0 10px;letter-spacing:-0.02em;}
+  .section-head p{color:var(--text-muted);font-size:15px;margin:0;}
+  .steps{display:flex;align-items:flex-start;justify-content:center;gap:0;}
+  .step{display:flex;flex-direction:column;align-items:center;text-align:center;width:230px;}
+  .step-icons{display:flex;align-items:center;gap:8px;margin-bottom:18px;}
+  .step-num{
+    width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:15px;flex-shrink:0;
+  }
+  .step-ic{width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .step-ic svg{width:17px;height:17px;}
+  .step h3{font-size:16px;margin:0 0 8px;font-weight:700;}
+  .step p{font-size:13.5px;color:var(--text-muted);line-height:1.55;margin:0;}
+  .step-arrow{display:flex;align-items:center;padding-top:19px;color:var(--text-faint);}
+  .step-arrow svg{width:26px;height:26px;}
+
+  /* ---------- Extra tools ---------- */
+  .extra{padding:78px 0;}
+
+  /* ===== FAQ accordion ===== */
+  .faq-section{padding:78px 0;background:var(--bg-soft, var(--bg));border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+  .faq-list{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:14px;}
+  .faq-item{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);
+    overflow:hidden;box-shadow:var(--shadow-sm);transition:box-shadow .2s ease, border-color .2s ease;
+  }
+  .faq-item.open{border-color:var(--brand);box-shadow:0 10px 24px -12px rgba(255,45,85,0.25);}
+  .faq-question{
+    width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:19px 22px;background:none;border:none;text-align:left;font-size:15.5px;font-weight:700;
+    color:var(--text);transition:color .18s ease;
+  }
+  .faq-question:hover{color:var(--brand);}
+  .faq-question .faq-icon{
+    width:26px;height:26px;flex-shrink:0;border-radius:50%;background:var(--brand-soft);color:var(--brand-dark);
+    display:flex;align-items:center;justify-content:center;transition:transform .28s ease, background .2s ease, color .2s ease;
+  }
+  [data-theme="dark"] .faq-question .faq-icon{color:var(--brand);}
+  .faq-question .faq-icon svg{width:13px;height:13px;}
+  .faq-item.open .faq-question .faq-icon{transform:rotate(135deg);background:var(--brand);color:#fff;}
+  .faq-answer{max-height:0;overflow:hidden;transition:max-height .32s ease, padding .32s ease;padding:0 22px;}
+  .faq-item.open .faq-answer{padding:0 22px 20px;}
+  .faq-answer p{margin:0;font-size:14.5px;line-height:1.75;color:var(--text-muted);}
+  @media(max-width:640px){
+    .faq-question{padding:16px 16px;font-size:14.5px;}
+    .faq-answer{padding:0 16px;}
+    .faq-item.open .faq-answer{padding:0 16px 16px;}
+  }
+
+  /* ===== Educational content (below each tool) ===== */
+  .edu{padding:64px 0 78px;}
+  .edu-content{
+    max-width:900px;margin:0 auto;background:var(--surface);border:1px solid var(--border);
+    border-radius:var(--radius-lg);padding:40px 44px;box-shadow:var(--shadow-sm);
+  }
+  .edu-content h2{font-size:26px;font-weight:800;letter-spacing:-0.01em;margin:0 0 14px;}
+  .edu-content h3{font-size:18px;font-weight:800;margin:30px 0 10px;display:flex;align-items:center;gap:8px;}
+  .edu-content h3 svg{width:19px;height:19px;color:var(--brand);flex-shrink:0;}
+  .edu-content > p{color:var(--text-muted);font-size:15.5px;line-height:1.7;margin:0 0 4px;}
+  .edu-content p{font-size:15px;line-height:1.75;color:var(--text-muted);margin:0 0 10px;}
+  .edu-content ul, .edu-content ol{margin:0 0 6px;padding-left:22px;color:var(--text-muted);font-size:15px;line-height:1.75;}
+  .edu-content li{margin-bottom:7px;}
+  .edu-content li strong, .edu-content p strong{color:var(--text);font-weight:700;}
+  .edu-content .edu-example{
+    background:var(--bg-soft, var(--bg));border:1px solid var(--border);border-radius:var(--radius-md);
+    padding:16px 18px;margin:8px 0 18px;font-size:14.5px;color:var(--text);
+  }
+  .edu-content .edu-example b{color:var(--brand);}
+  .edu-content .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:6px;}
+  @media(max-width:760px){
+    .edu-content{padding:26px 22px;}
+    .edu-content .edu-grid{grid-template-columns:1fr;gap:0;}
+  }
+
+  /* ===== About / Contact pages ===== */
+  .about-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:28px 0 4px;}
+  .about-stat{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);
+    padding:20px 16px;text-align:center;box-shadow:var(--shadow-sm);
+  }
+  .about-stat .num{font-size:26px;font-weight:800;color:var(--brand);}
+  .about-stat .lbl{font-size:12.5px;color:var(--text-muted);font-weight:600;margin-top:4px;}
+  @media(max-width:760px){ .about-grid{grid-template-columns:1fr 1fr;} }
+
+  .contact-body{padding:28px 22px 30px;display:grid;grid-template-columns:1.55fr 1fr;gap:24px;}
+  @media(max-width:980px){ .contact-body{grid-template-columns:1fr;} }
+  .contact-info-item{display:flex;gap:12px;align-items:flex-start;margin-bottom:18px;}
+  .contact-info-item svg{width:19px;height:19px;color:var(--brand);flex-shrink:0;margin-top:2px;}
+  .contact-info-item .ci-label{font-size:12.5px;color:var(--text-faint);font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin-bottom:2px;}
+  .contact-info-item .ci-value{font-size:14.5px;color:var(--text);font-weight:600;}
+  .contact-info-item a.ci-value:hover{color:var(--brand);}
+  .contact-success{
+    display:flex;align-items:flex-start;gap:12px;background:var(--green-soft);border:1px solid var(--green);
+    border-radius:var(--radius-md);padding:16px 18px;margin-top:6px;
+  }
+  .contact-success svg{width:22px;height:22px;color:var(--green);flex-shrink:0;}
+  .contact-success .cs-title{font-weight:800;font-size:15px;margin-bottom:3px;}
+  .contact-success .cs-copy{font-size:13.5px;color:var(--text-muted);line-height:1.5;}
+  .extra-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .extra-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:22px;transition:.2s;text-align:left;width:100%;
+    display:flex;flex-direction:column;align-items:flex-start;
+  }
+  .extra-card:hover{box-shadow:var(--shadow-lg);border-color:color-mix(in srgb, var(--brand) 30%, var(--border));transform:translateY(-3px);}
+  .extra-card .ic{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+  .extra-card .ic svg{width:17px;height:17px;}
+  .extra-card h4{font-size:15px;margin:0 0 6px;font-weight:700;}
+  .extra-card p{font-size:13px;color:var(--text-muted);margin:0 0 14px;line-height:1.5;}
+  .badge-live{
+    font-size:11px;font-weight:700;color:var(--green);background:var(--green-soft);padding:4px 10px;border-radius:999px;
+    display:inline-flex;align-items:center;gap:5px;
+  }
+  .badge-live .pulse-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.6s ease-in-out infinite;}
+  .extra-card .goto{margin-top:auto;padding-top:10px;font-size:12.5px;font-weight:700;color:var(--brand);display:flex;align-items:center;gap:5px;}
+  .extra-card .goto svg{width:13px;height:13px;transition:transform .2s;}
+  .extra-card:hover .goto svg{transform:translateX(3px);}
+
+  /* ===== Blog section ===== */
+  .blog-section{padding:78px 0;}
+  .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .blog-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;
+    display:flex;flex-direction:column;text-align:left;width:100%;transition:.2s;box-shadow:var(--shadow-sm);
+  }
+  .blog-card:hover{box-shadow:var(--shadow-lg);border-color:color-mix(in srgb, var(--brand) 30%, var(--border));transform:translateY(-3px);}
+  .blog-card-top{
+    height:112px;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0;
+  }
+  .blog-card-top svg{width:34px;height:34px;}
+  .blog-card-body{padding:20px 22px 22px;display:flex;flex-direction:column;flex-grow:1;}
+  .blog-cat{
+    align-self:flex-start;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;
+    padding:4px 10px;border-radius:999px;margin-bottom:12px;
+  }
+  .blog-card h3{font-size:16.5px;font-weight:800;margin:0 0 8px;line-height:1.35;}
+  .blog-card p{font-size:13.5px;color:var(--text-muted);line-height:1.6;margin:0 0 16px;}
+  .blog-meta{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:10px;border-top:1px solid var(--border);}
+  .blog-readtime{font-size:12px;color:var(--text-faint);font-weight:600;}
+  .blog-readmore{font-size:12.5px;font-weight:700;color:var(--brand);display:flex;align-items:center;gap:5px;background:none;border:none;padding:0;}
+  .blog-readmore svg{width:13px;height:13px;transition:transform .2s;}
+  .blog-card:hover .blog-readmore svg{transform:translateX(3px);}
+  @media(max-width:980px){ .blog-grid{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:640px){ .blog-grid{grid-template-columns:1fr;} }
+
+  /* Blog article page */
+  .article-meta-row{display:flex;align-items:center;gap:14px;margin-bottom:16px;flex-wrap:wrap;}
+  .article-meta-row .blog-cat{margin-bottom:0;}
+  .article-meta-row .blog-readtime{font-size:13px;}
+
+  /* ---------- Footer ---------- */
+  footer.site{background:#0d0e1a;color:#dcdde6;padding:46px 0 26px;margin-top:10px;}
+  .foot-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px;padding-bottom:30px;border-bottom:1px solid #232538;}
+  .foot-brand{display:flex;align-items:center;gap:10px;}
+  .foot-brand .name{font-weight:800;font-size:16px;color:#fff;}
+  .foot-brand .sub{font-size:11px;color:#8b8ea6;}
+  .foot-links{display:flex;gap:26px;flex-wrap:wrap;}
+  .foot-links a{font-size:13.5px;color:#b3b5c7;font-weight:600;}
+  .foot-links a:hover{color:#fff;}
+  .foot-social{display:flex;flex-wrap:wrap;gap:10px;max-width:280px;}
+  .foot-social a{width:34px;height:34px;border-radius:50%;background:#181a2c;display:flex;align-items:center;justify-content:center;color:#b3b5c7;transition:.2s;}
+  .foot-social a:hover{background:var(--brand);color:#fff;}
+  .foot-social svg{width:15px;height:15px;}
+  .foot-bottom{display:flex;justify-content:space-between;padding-top:20px;font-size:12.5px;color:#75778f;flex-wrap:wrap;gap:8px;}
+
+  /* toast */
+  .toast{
+    position:fixed;bottom:36px;left:50%;transform:translateX(-50%) translateY(30px) scale(.85);background:var(--text);color:var(--bg);
+    padding:22px 40px;border-radius:999px;font-size:22px;font-weight:800;box-shadow:0 20px 46px -10px rgba(0,0,0,0.45);
+    opacity:0;pointer-events:none;transition:opacity .35s cubic-bezier(.34,1.56,.64,1), transform .45s cubic-bezier(.34,1.56,.64,1);
+    z-index:200;display:flex;align-items:center;gap:12px;max-width:90vw;white-space:nowrap;
+  }
+  .toast svg{width:20px;height:20px;color:var(--green);flex-shrink:0;}
+  .toast.error svg{color:var(--brand);}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0) scale(1);animation:toastWiggle 1.8s ease-in-out infinite;}
+  .toast .emoji-anim{display:inline-block;animation:emojiFloat 1.6s ease-in-out infinite;}
+  .toast .emoji-anim.e2{animation-delay:.2s;}
+  .toast .emoji-anim.e3{animation-delay:.4s;}
+  .toast .emoji-anim.e4{animation-delay:.6s;}
+  @keyframes toastWiggle{
+    0%,100%{transform:translateX(-50%) translateY(0) scale(1) rotate(0deg);}
+    25%{transform:translateX(-50%) translateY(-4px) scale(1.02) rotate(-0.5deg);}
+    75%{transform:translateX(-50%) translateY(-2px) scale(1.01) rotate(0.5deg);}
+  }
+  @keyframes emojiFloat{
+    0%,100%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-6px) rotate(8deg);}
+  }
+  @media(max-width:640px){
+    .toast{padding:16px 22px;font-size:16px;gap:8px;}
+  }
+
+  @media(max-width:980px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-art{order:-1;margin-bottom:10px;}
+    h1.headline{font-size:36px;}
+    .panel-body{grid-template-columns:1fr;}
+    .feat-grid{grid-template-columns:repeat(2,1fr);}
+    .steps{flex-direction:column;gap:26px;}
+    .step-arrow{display:none;}
+    .step{width:100%;}
+    .extra-grid{grid-template-columns:repeat(2,1fr);}
+    nav.links{display:none;}
+    .menu-toggle{display:flex;}
+    .foot-top{flex-direction:column;}
+  }
+  @media(max-width:560px){
+    h1.headline{font-size:30px;}
+    .wrap{padding:0 18px;}
+    .feat-grid{grid-template-columns:1fr;}
+    .extra-grid{grid-template-columns:1fr;}
+    .hero{padding:36px 0 24px;}
+    .art-card{width:230px;}
+    .float-chip{font-size:10px;padding:5px 9px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
+  }
+
+  /* ---------- SPA view routing ---------- */
+  .page-view.view-hidden{display:none;}
+  /* Offset in-page scroll targets so the sticky 74px header never covers
+     the top of the section being navigated to. */
+  #home, #tools, #blog, #faq{scroll-margin-top:90px;}
+  .tool-hero{padding:38px 0 4px;}
+  .backrow{margin-bottom:22px;}
+  .btn-back{
+    display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);
+    border-radius:999px;padding:9px 16px 9px 12px;font-weight:700;font-size:13.5px;color:var(--text-muted);
+    box-shadow:var(--shadow-sm);transition:.18s;border-width:1px;
+  }
+  .btn-back svg{width:15px;height:15px;transition:transform .18s;}
+  .btn-back:hover{color:var(--brand-dark);border-color:color-mix(in srgb, var(--brand) 30%, var(--border));}
+  .btn-back:hover svg{transform:translateX(-3px);}
+  .tool-hero h1.headline{font-size:36px;margin:0 0 14px;}
+  .tool-hero .hero-copy{max-width:640px;margin:0 0 4px;}
+  a.tab, button.tab{background:none;border:none;}
+  .extra-card, .tab{cursor:pointer;}
+/* ===== Motion polish ===== */
+  html{scroll-behavior:smooth;}
+  @keyframes mpFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-4px);}}
+  @keyframes mpSwing{0%,100%{transform:rotate(-7deg);}50%{transform:rotate(7deg);}}
+  @keyframes mpPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.09);}}
+  @keyframes mpOrbit{0%,100%{transform:translate(0,0);}25%{transform:translate(3px,-3px);}50%{transform:translate(0,-5px);}75%{transform:translate(-3px,-3px);}}
+  @keyframes mpRise{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+  /* Entrance: cards rise in one after another (fill-mode "backwards" so hover transforms still work afterwards) */
+  .tool-card,.extra-card,.blog-card,.feat,.about-stat,.faq-item,.edu-content,.panel{
+    animation:mpRise .6s cubic-bezier(.2,.7,.2,1) backwards;
+  }
+  :is(.tool-grid,.extra-grid,.blog-grid,.about-grid,.faq-list,.feat-grid)>:nth-child(1){animation-delay:.03s;}
+  :is(.tool-grid,.extra-grid,.blog-grid,.about-grid,.faq-list,.feat-grid)>:nth-child(2){animation-delay:.10s;}
+  :is(.tool-grid,.extra-grid,.blog-grid,.about-grid,.faq-list,.feat-grid)>:nth-child(3){animation-delay:.17s;}
+  :is(.tool-grid,.extra-grid,.blog-grid,.about-grid,.faq-list,.feat-grid)>:nth-child(4){animation-delay:.24s;}
+  :is(.tool-grid,.extra-grid,.blog-grid,.about-grid,.faq-list,.feat-grid)>:nth-child(5){animation-delay:.31s;}
+  :is(.tool-grid,.extra-grid,.blog-grid,.about-grid,.faq-list,.feat-grid)>:nth-child(n+6){animation-delay:.38s;}
+
+  /* Animated icons */
+  .ic,.step-ic,.sec-ic,.blog-card-top svg,.contact-info-item svg,.edu-content h3 svg,.eyebrow svg,.tab .icon-dot{
+    animation:mpFloat 4.6s ease-in-out infinite;
+  }
+  .eyebrow svg{animation:mpPulse 2.4s ease-in-out infinite;}
+  .tab .icon-dot{animation:none;transition:rotate .3s ease,scale .3s ease;}
+  .tab:hover .icon-dot{rotate:-10deg;scale:1.2;}
+  :is(.extra-grid,.tool-grid,.feat-grid)>:nth-child(2) .ic{animation-delay:-.9s;}
+  :is(.extra-grid,.tool-grid,.feat-grid)>:nth-child(3) .ic{animation-delay:-1.8s;}
+  :is(.extra-grid,.tool-grid,.feat-grid)>:nth-child(4) .ic{animation-delay:-2.7s;}
+  :is(.extra-grid,.tool-grid,.feat-grid)>:nth-child(5) .ic{animation-delay:-3.6s;}
+  .ic svg,.sec-ic svg,.step-ic svg,.blog-card-top svg,.contact-info-item svg,.edu-content h3 svg{transition:rotate .35s ease,scale .35s ease;}
+  .tool-card:hover .ic svg,.extra-card:hover .ic svg,.feat:hover .ic svg,.step:hover .step-ic svg,.sec-ic:hover svg{rotate:-9deg;scale:1.18;}
+  .blog-card:hover .blog-card-top svg{rotate:-9deg;scale:1.18;}
+  .contact-info-item:hover svg,.edu-content h3:hover svg{rotate:-10deg;scale:1.2;}
+  .sec-ic{width:54px;height:54px;border-radius:16px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;background:var(--brand-soft);color:var(--brand);}
+  .sec-ic svg{width:26px;height:26px;}
+
+  /* Card hover: lift, soft glow, accent bar */
+  .tool-card,.extra-card,.blog-card,.feat,.about-stat{
+    position:relative;transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease,border-color .3s ease;
+  }
+  .tool-card::before,.extra-card::before,.blog-card::before{
+    content:"";position:absolute;left:0;right:0;top:0;height:3px;z-index:2;
+    background:linear-gradient(90deg,var(--accent,var(--brand)),var(--purple));
+    transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.2,.7,.2,1);
+  }
+  .tool-card:hover::before,.extra-card:hover::before,.blog-card:hover::before{transform:scaleX(1);}
+  .about-stat:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+  .faq-item{transition:border-color .25s ease,box-shadow .25s ease;}
+  .faq-item:hover{border-color:color-mix(in srgb,var(--brand) 35%,var(--border));}
+
+  /* Buttons: shine sweep */
+  .btn-primary,.btn-generate{position:relative;overflow:hidden;}
+  .btn-primary::after,.btn-generate::after{
+    content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;pointer-events:none;
+    background:linear-gradient(105deg,transparent,rgba(255,255,255,.38),transparent);transform:skewX(-20deg);transition:left .65s ease;
+  }
+  .btn-primary:hover::after,.btn-generate:hover::after{left:140%;}
+  .btn-back svg,.btn-more svg{transition:transform .25s ease;}
+  .btn-more:hover svg{transform:rotate(90deg);}
+
+  /* Nav, logo, footer, toggles */
+  nav.links a:not(.active)::after,.mobile-menu a:not(.active)::after{
+    content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--brand);border-radius:2px;
+    transform:scaleX(0);transform-origin:left;transition:transform .28s ease;
+  }
+  nav.links a:not(.active):hover::after{transform:scaleX(1);}
+  .mobile-menu a{position:relative;}
+  .brand .mark{transition:transform .35s cubic-bezier(.2,.7,.2,1);}
+  .brand:hover .mark{transform:rotate(-10deg) scale(1.08);}
+  .foot-social a{transition:transform .28s cubic-bezier(.2,.7,.2,1),background .25s ease,color .25s ease;}
+  .foot-social a:hover{transform:translateY(-4px) rotate(-8deg);}
+  .foot-links a{transition:color .2s ease,transform .2s ease;display:inline-block;}
+  .foot-links a:hover{transform:translateX(3px);}
+  .theme-toggle button svg{transition:rotate .4s ease;}
+  .theme-toggle button:hover svg{rotate:25deg;}
+  .tag-pill{transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease,background .2s ease;}
+  .tag-pill:hover{transform:translateY(-2px);}
+  .title-row{transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;}
+  .title-row:hover{transform:translateX(3px);}
+
+  .extra-card{overflow:hidden;}
+  a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--brand);outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .ic,.step-ic,.sec-ic,.blog-card-top svg,.contact-info-item svg,.edu-content h3 svg,.eyebrow svg,.tool-card .ic{animation:none !important;}
+  }
+/* ===== /Motion polish ===== */
+
+  /* ===== Home: Tools section ===== */
+  .tools-home{padding:34px 0 88px;}
+  .tools-head{text-align:center;max-width:720px;margin:0 auto 38px;}
+  .tools-head h2{font-size:34px;font-weight:800;letter-spacing:-0.02em;margin:0 0 12px;}
+  .tools-head p{color:var(--text-muted);font-size:16px;line-height:1.7;margin:0;}
+  .tools-info{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:22px;}
+  .info-pill{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;padding:7px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--border);color:var(--text-muted);transition:transform .25s ease,border-color .25s ease,color .25s ease;}
+  .info-pill:hover{transform:translateY(-2px);border-color:var(--brand);color:var(--text);}
+  .info-pill svg{width:14px;height:14px;color:var(--green);}
+  .tool-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .tool-card{
+    display:flex;flex-direction:column;align-items:flex-start;text-align:left;overflow:hidden;
+    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 26px 24px;
+    box-shadow:var(--shadow-sm);color:var(--text);text-decoration:none;
+  }
+  .tool-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:color-mix(in srgb,var(--accent) 38%,var(--border));}
+  .tool-card .ic{width:60px;height:60px;border-radius:18px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;background:var(--accent-soft);color:var(--accent);transition:box-shadow .3s ease;}
+  .tool-card:hover .ic{box-shadow:0 10px 24px -10px var(--accent);}
+  .tool-card .ic svg{width:28px;height:28px;}
+  .tool-card h3{font-size:19px;font-weight:800;margin:0 0 8px;letter-spacing:-0.01em;}
+  .tool-card p{font-size:14px;color:var(--text-muted);line-height:1.65;margin:0 0 18px;}
+  .tool-card .goto{margin-top:auto;font-size:13.5px;font-weight:700;color:var(--accent);display:inline-flex;align-items:center;gap:6px;}
+  .tool-card .goto svg{width:14px;height:14px;transition:transform .25s ease;}
+  .tool-card:hover .goto svg{transform:translateX(5px);}
+  .tool-card .badge-live{position:absolute;top:18px;right:18px;}
+  @media(max-width:1180px) and (min-width:981px){.tool-card{padding:24px 20px 22px;} .tool-card h3{font-size:17px;}}
+  .t-brand{--accent:var(--brand);--accent-soft:var(--brand-soft);}
+  .t-blue{--accent:var(--blue);--accent-soft:var(--blue-soft);}
+  .t-purple{--accent:var(--purple);--accent-soft:var(--purple-soft);}
+  .t-green{--accent:var(--green);--accent-soft:var(--green-soft);}
+  .a-swing .ic{animation-name:mpSwing;animation-duration:3.2s;transform-origin:50% 20%;}
+  .a-pulse .ic{animation-name:mpPulse;animation-duration:2.6s;}
+  .a-orbit .ic{animation-name:mpOrbit;animation-duration:5s;}
+  @media(max-width:980px){
+    .tool-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(max-width:600px){
+    .tools-head h2{font-size:28px;}
+    .tool-grid{grid-template-columns:1fr;gap:16px;}
+  }
+
+  /* ===== Home: Why TubeSetup ===== */
+  .why-home{padding:10px 0 92px;}
+  .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+  .why-card{
+    position:relative;overflow:hidden;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);
+    padding:28px 28px 24px;box-shadow:var(--shadow-sm);
+    animation:mpRise .6s cubic-bezier(.2,.7,.2,1) backwards;
+    transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease,border-color .3s ease;
+  }
+  .why-grid>:nth-child(2){animation-delay:.08s;} .why-grid>:nth-child(3){animation-delay:.16s;} .why-grid>:nth-child(4){animation-delay:.24s;}
+  .why-card::before{
+    content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--purple));
+    transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.2,.7,.2,1);
+  }
+  .why-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:color-mix(in srgb,var(--accent) 38%,var(--border));}
+  .why-card:hover::before{transform:scaleX(1);}
+  .why-card .ic{width:56px;height:56px;border-radius:17px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;background:var(--accent-soft);color:var(--accent);transition:box-shadow .3s ease;}
+  .why-card:hover .ic{box-shadow:0 10px 24px -10px var(--accent);}
+  .why-card .ic svg{width:26px;height:26px;}
+  .why-card:hover .ic svg{rotate:-9deg;scale:1.18;}
+  .why-card h3{font-size:20px;font-weight:800;margin:0 0 10px;letter-spacing:-0.01em;}
+  .why-card p{font-size:14.5px;color:var(--text-muted);line-height:1.75;margin:0 0 16px;}
+  .why-link{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:700;color:var(--accent);text-decoration:none;}
+  .why-link svg{width:14px;height:14px;transition:transform .25s ease;}
+  .why-link:hover svg{transform:translateX(5px);}
+  @media(max-width:760px){
+    .why-grid{grid-template-columns:1fr;gap:16px;}
+    .why-card{padding:24px 22px 20px;}
+  }
+
+  /* ===== New tools: shared form + output styles ===== */
+  .form-col{min-width:0;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:620px){.field-row{grid-template-columns:1fr;}}
+  .opt-group{display:flex;flex-wrap:wrap;gap:8px;}
+  .opt{position:relative;cursor:pointer;display:inline-block;}
+  .opt input{position:absolute;opacity:0;width:1px;height:1px;margin:0;}
+  .opt span{
+    display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:999px;border:1.5px solid var(--border);
+    background:var(--bg-soft,var(--bg));font-size:13.5px;font-weight:700;color:var(--text-muted);transition:.18s;user-select:none;
+  }
+  [data-theme="dark"] .opt span{background:#101223;}
+  .opt:hover span{border-color:color-mix(in srgb,var(--brand) 45%,var(--border));color:var(--text);}
+  .opt input:checked + span{background:var(--brand-soft);border-color:var(--brand);color:var(--brand-dark);}
+  [data-theme="dark"] .opt input:checked + span{color:var(--brand);}
+  .opt input:focus-visible + span{outline:2px solid var(--brand);outline-offset:3px;}
+  .opt-note{font-size:12.5px;color:var(--text-faint);margin:8px 0 0;font-weight:600;}
+  .counter{font-size:12px;color:var(--text-faint);text-align:right;margin:-2px 2px 0;}
+
+  .side-box{background:var(--bg-soft,var(--bg));border:1px solid var(--border);border-radius:var(--radius-md);padding:20px;margin-top:16px;}
+  [data-theme="dark"] .side-box{background:#101223;}
+  .side-box h4{margin:0 0 12px;font-size:14.5px;font-weight:800;}
+  .side-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;}
+  .side-list li{display:flex;align-items:center;gap:10px;font-size:13.5px;font-weight:600;color:var(--text-muted);}
+  .side-list .sw{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+  .sw.hook{background:var(--brand);} .sw.intro{background:var(--blue);} .sw.main{background:var(--purple);}
+  .sw.trans{background:var(--text-faint);} .sw.concl{background:var(--green);} .sw.cta{background:#f5a524;}
+  .sw.positive{background:var(--green);} .sw.negative{background:var(--brand);} .sw.question{background:var(--blue);}
+  .sw.feedback{background:var(--purple);} .sw.general{background:var(--text-faint);}
+
+  .out-actions{display:flex;gap:8px;flex-wrap:wrap;}
+  .copy-all{border:none;}
+  .copy-all.alt{background:var(--bg-soft,var(--bg));color:var(--text-muted);border:1px solid var(--border);}
+  [data-theme="dark"] .copy-all.alt{background:#101223;}
+  .copy-all.alt:hover{color:var(--text);border-color:color-mix(in srgb,var(--brand) 40%,var(--border));}
+  .copy-all.copied{background:var(--green-soft);color:var(--green);border-color:transparent;}
+  .copy-all svg.spin-ic{animation:spin .9s linear infinite;}
+  .meta-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px;}
+  .meta-chip{font-size:12.5px;font-weight:700;padding:6px 12px;border-radius:999px;background:var(--bg-soft,var(--bg));border:1px solid var(--border);color:var(--text-muted);display:inline-flex;align-items:center;gap:7px;}
+  [data-theme="dark"] .meta-chip{background:#101223;}
+  .meta-chip b{color:var(--text);font-weight:800;}
+
+  /* ---- Script document ---- */
+  .script-doc{display:flex;flex-direction:column;gap:12px;}
+  .sc-block{
+    position:relative;background:var(--bg-soft,var(--bg));border:1px solid var(--border);border-left:4px solid var(--bar,var(--border));
+    border-radius:12px;padding:16px 18px 16px;animation:pop .35s ease backwards;
+  }
+  [data-theme="dark"] .sc-block{background:#101223;}
+  .sc-block.k-hook{--bar:var(--brand);} .sc-block.k-intro{--bar:var(--blue);} .sc-block.k-point{--bar:var(--purple);}
+  .sc-block.k-conclusion{--bar:var(--green);} .sc-block.k-cta{--bar:#f5a524;}
+  .sc-block.k-transition{--bar:var(--border);background:transparent;border-style:dashed;border-left-width:1px;padding:10px 18px;}
+  .sc-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:8px;flex-wrap:wrap;}
+  .sc-label{font-size:14px;font-weight:800;color:var(--text);}
+  .sc-time{font-size:12px;font-weight:700;color:var(--text-faint);font-variant-numeric:tabular-nums;}
+  .sc-text{margin:0;font-size:15px;line-height:1.75;color:var(--text);white-space:pre-wrap;}
+  .sc-note{margin:8px 0 0;font-size:13px;line-height:1.6;color:var(--text-faint);font-style:italic;}
+  .k-transition .sc-text{font-size:13.5px;color:var(--text-muted);font-style:italic;}
+  .k-transition .sc-label{font-size:12px;color:var(--text-faint);font-weight:700;margin-right:8px;}
+  .k-transition .sc-head{margin:0;display:block;}
+  .main-label{font-size:12.5px;font-weight:800;color:var(--purple);margin:6px 0 -2px;}
+
+  /* ---- Reply cards ---- */
+  .detect-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:16px;}
+  .detect-badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;padding:7px 14px;border-radius:999px;border:1px solid var(--border);background:var(--bg-soft,var(--bg));}
+  [data-theme="dark"] .detect-badge{background:#101223;}
+  .detect-badge .sw{width:9px;height:9px;border-radius:50%;}
+  .detect-help{font-size:13px;color:var(--text-muted);font-weight:600;}
+  .reply-list{display:flex;flex-direction:column;gap:12px;}
+  .reply-card{
+    display:flex;align-items:flex-start;justify-content:space-between;gap:16px;background:var(--bg-soft,var(--bg));border:1px solid var(--border);
+    border-radius:12px;padding:16px 16px 16px 18px;animation:pop .35s ease backwards;transition:border-color .2s,transform .2s,box-shadow .2s;
+  }
+  [data-theme="dark"] .reply-card{background:#101223;}
+  .reply-card:hover{border-color:var(--brand);transform:translateY(-1px);box-shadow:var(--shadow-sm);}
+  .reply-text{margin:0;font-size:15px;line-height:1.7;color:var(--text);flex:1;min-width:0;overflow-wrap:anywhere;}
+  .reply-copy{
+    flex-shrink:0;display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);color:var(--text-muted);
+    border-radius:999px;padding:7px 13px;font-size:12.5px;font-weight:700;transition:.18s;
+  }
+  .reply-copy svg{width:13px;height:13px;}
+  .reply-copy:hover{border-color:var(--brand);color:var(--brand-dark);}
+  .reply-copy.copied{background:var(--green);border-color:var(--green);color:#fff;}
+  @media(max-width:560px){.reply-card{flex-direction:column;}.reply-copy{align-self:flex-end;}}
+  .skel-block{display:flex;flex-direction:column;gap:10px;padding:6px 0;}
+  .skel-block .skeleton-row:nth-child(2){width:86%;} .skel-block .skeleton-row:nth-child(3){width:62%;}
+  .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+
+  .btn-clear{border:none;}
+</style>
+</head>
+<body data-page="comment">
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="index.html" data-nav="home" style="text-decoration:none;">
+      <div class="mark">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M9 7L17 12L9 17V7Z" fill="white"/></svg>
+      </div>
+      <div>
+        <div class="name">TubeSetup</div>
+        <div class="sub">YouTube Tools</div>
+      </div>
+    </a>
+    <nav class="links">
+      <a href="index.html" data-nav="home">Home</a>
+      <a href="index.html#tools" data-nav="home" data-scroll="tools" class="active" aria-current="page">Tools</a>
+      <a href="blog.html" data-nav="blog">Blog</a>
+      <a href="faq.html" data-nav="faq">FAQ</a>
+    </nav>
+    <div class="nav-right">
+      <div class="theme-toggle" role="group" aria-label="Toggle theme">
+        <button id="lightBtn" class="active" aria-label="Light mode">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+        <button id="darkBtn" aria-label="Dark mode">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+        </button>
+      </div>
+      <button class="btn btn-primary" id="getStartedBtn">Get Started</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" data-nav="home">Home</a>
+    <a href="index.html#tools" data-nav="home" data-scroll="tools" class="active" aria-current="page">Tools</a>
+    <a href="blog.html" data-nav="blog">Blog</a>
+    <a href="faq.html" data-nav="faq">FAQ</a>
+  </div>
+</header>
+
+<main id="app">
+  <div class="page-view" id="view-comment" data-view="comment">
+
+  <section class="tool-hero">
+    <div class="wrap">
+      <div class="backrow">
+        <a class="btn-back" href="index.html#tools">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+          All tools
+        </a>
+      </div>
+      <span class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 5.3L19 9l-5.4 1.7L12 16l-1.6-5.3L5 9l5.4-1.7L12 2z"/></svg>
+        Free YouTube Tool
+      </span>
+      <h1 class="headline">YouTube Comment <span class="accent">Reply Generator</span></h1>
+      <p class="hero-copy">Paste a comment and get natural reply suggestions in seconds. The tool detects whether it is praise, criticism, a question or feedback, then writes replies that fit, in your tone and language.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="panel" id="toolPanel">
+        <div class="tabs" role="navigation" aria-label="YouTube tools">
+  <a class="tab" href="tag-generator.html"><svg class="icon-dot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4l-7.2 7.2a2 2 0 01-2.8 0L3 13V3h10l7.6 7.6a2 2 0 010 2.8z"/><circle cx="7.5" cy="7.5" r="1.3" fill="currentColor"/></svg>Tags</a>
+  <a class="tab" href="hashtag-generator.html"><svg class="icon-dot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16M4 15h16M10 3L8 21M16 3l-2 18"/></svg>Hashtags</a>
+  <a class="tab" href="title-generator.html"><svg class="icon-dot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6V4h14v2M12 4v16M9 20h6"/></svg>Titles</a>
+  <a class="tab" href="description-generator.html"><svg class="icon-dot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Descriptions</a>
+  <a class="tab" href="keyword-generator.html"><svg class="icon-dot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Keywords</a>
+  <a class="tab" href="thumbnail-downloader.html"><svg class="icon-dot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 9"/></svg>Thumbnails</a>
+  <a class="tab" href="video-idea-generator.html"><svg class="icon-dot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0012 3z"/></svg>Video Ideas</a>
+  <a class="tab" href="channel-name-generator.html"><svg class="icon-dot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M8 2l4 4 4-4"/></svg>Channel Names</a>
+  <a class="tab" href="video-script-generator.html"><svg class="icon-dot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z"/><path d="M14 3v5h5M9 13h6M9 17h6M9 9h2"/></svg>Script Generator</a>
+  <a class="tab active" aria-current="page" href="comment-reply-generator.html"><svg class="icon-dot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 01-11.6 7.1L4 20l1-4.6A8 8 0 1121 12z"/><path d="M8.5 11h7M8.5 14.5h4"/></svg>Comment Replies</a>
+</div>
+        <div class="panel-body">
+
+          <div class="form-col">
+            <div class="field-block">
+              <label class="field-label" for="comment">Paste the YouTube comment <span class="req">*</span></label>
+              <div class="input-wrap" id="commentWrap">
+                <textarea id="comment" rows="4" maxlength="1000" placeholder="Paste a comment from your video here..." aria-describedby="commentErr"></textarea>
+                <svg class="leading" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 01-11.6 7.1L4 20l1-4.6A8 8 0 1121 12z"/></svg>
+              </div>
+              <div class="counter" id="counter">0 / 1000</div>
+              <p class="error-text" id="commentErr" role="alert"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>Paste a comment first so we know what to reply to.</p>
+            </div>
+
+            <div class="field-block">
+              <span class="field-label" id="lblTone">Reply tone</span>
+              <div class="opt-group" role="radiogroup" aria-labelledby="lblTone">
+                <label class="opt"><input type="radio" name="rtone" value="friendly" checked><span>Friendly</span></label>
+                <label class="opt"><input type="radio" name="rtone" value="professional"><span>Professional</span></label>
+                <label class="opt"><input type="radio" name="rtone" value="funny"><span>Funny</span></label>
+                <label class="opt"><input type="radio" name="rtone" value="emotional"><span>Emotional</span></label>
+                <label class="opt"><input type="radio" name="rtone" value="short"><span>Short</span></label>
+              </div>
+            </div>
+
+            <div class="field-block field-select" style="max-width:340px;">
+              <label class="field-label" for="lang">Reply language</label>
+              <select id="lang"></select>
+            </div>
+
+            <div class="actions-row">
+              <button class="btn btn-generate" id="genBtn" type="button">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.6 5.3L19 9l-5.4 1.7L12 16l-1.6-5.3L5 9l5.4-1.7L12 2z"/></svg>
+                Generate Replies
+              </button>
+              <button class="btn-clear" id="clearBtn" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                Clear
+              </button>
+            </div>
+          </div>
+
+          <div class="side-col">
+            <div class="example-box">
+              <div class="example-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0012 3z"/></svg>
+                Try an example
+              </div>
+              <div class="example-chips">
+                <button class="chip" type="button" data-example="Great video! The editing is so smooth 😍">Great video! The editing is so smooth 😍</button>
+                <button class="chip" type="button" data-example="How do you record such clean audio?">How do you record such clean audio?</button>
+                <button class="chip" type="button" data-example="Honestly this was boring, waste of time">Honestly this was boring, waste of time</button>
+                <button class="chip" type="button" data-example="You should make a video about video editing">You should make a video about video editing</button>
+              </div>
+              <div class="example-hint">Click an example to generate replies</div>
+            </div>
+            <div class="side-box">
+              <h4>Comment types we detect</h4>
+              <ul class="side-list">
+                <li><span class="sw positive"></span>Positive: praise and thanks</li>
+                <li><span class="sw negative"></span>Negative: criticism and complaints</li>
+                <li><span class="sw question"></span>Question: asks you something</li>
+                <li><span class="sw feedback"></span>Feedback: suggestions and requests</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="results hidden" id="results">
+            <div class="results-head">
+              <div class="results-title">Reply suggestions</div>
+              <div class="out-actions">
+                <button class="copy-all alt" id="regenBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg> Regenerate</button>
+              </div>
+            </div>
+            <div class="detect-row" id="detectRow"></div>
+            <div class="reply-list" id="replyList"></div>
+            <div class="more-row"><button class="btn-more" id="moreBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg><span>More replies</span></button></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="edu">
+    <div class="wrap">
+      <div class="edu-content">
+        <h2>Why Replying to YouTube Comments Matters</h2>
+        <p>Replies tell viewers you are listening. Active comment sections keep people on your video longer, bring them back for the next upload and turn casual viewers into a community. The Comment Reply Generator helps you answer faster without sounding copy-pasted.</p>
+
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>How the replies are chosen</h3>
+        <p>The tool reads your comment and decides what kind it is, then writes replies for that situation:</p>
+        <ul>
+          <li><strong>Positive:</strong> warm thanks that invite the viewer to come back.</li>
+          <li><strong>Negative:</strong> calm, respectful answers that never argue.</li>
+          <li><strong>Question:</strong> a helpful acknowledgement with a promise to follow up.</li>
+          <li><strong>Feedback:</strong> appreciation for the idea and a note that you will consider it.</li>
+        </ul>
+
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>Personalise before you post</h3>
+        <p>Suggestions are starting points. For a question, add the actual answer if you have it. For feedback, say what you will really do. A short personal detail, like the viewer's name or a line from their comment, makes any reply feel genuine.</p>
+        <div class="edu-example"><b>Tip:</b> use <b>Regenerate</b> for a fresh set, or <b>More replies</b> to keep adding new ones below, then mix and match the parts you like.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="extra">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>More free YouTube tools</h2>
+        <p>Everything runs in your browser, with no sign-up.</p>
+      </div>
+      <div class="extra-grid">
+        <a class="extra-card" href="video-script-generator.html">
+          <div class="ic bg-pink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z"/><path d="M14 3v5h5M9 13h6M9 17h6M9 9h2"/></svg></div>
+          <h4>Video Script Generator</h4>
+          <p>Create a full script with a hook, intro, main points, transitions and a call to action.</p>
+          <span class="goto">Open tool <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="extra-card" href="title-generator.html">
+          <div class="ic bg-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6V4h14v2M12 4v16M9 20h6"/></svg></div>
+          <h4>Title Generator</h4>
+          <p>Write catchy, honest title ideas in five styles.</p>
+          <span class="goto">Open tool <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="extra-card" href="description-generator.html">
+          <div class="ic bg-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div>
+          <h4>Description Generator</h4>
+          <p>Build a structured, keyword-aware description with hashtags.</p>
+          <span class="goto">Open tool <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="extra-card" href="video-idea-generator.html">
+          <div class="ic bg-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0012 3z"/></svg></div>
+          <h4>Video Idea Generator</h4>
+          <p>Get fresh video ideas for your niche in five formats.</p>
+          <span class="goto">Open tool <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  </div>
+</main>
+
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="mark" style="width:34px;height:34px;border-radius:9px;">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 7L17 12L9 17V7Z" fill="white"/></svg>
+        </div>
+        <div>
+          <div class="name">TubeSetup</div>
+          <div class="sub">Better Tags. Bigger Views.</div>
+        </div>
+      </div>
+      <div class="foot-links">
+        <a href="index.html" data-nav="home">Home</a>
+        <a href="index.html#tools" data-nav="home" data-scroll="tools">Tools</a>
+        <a href="blog.html" data-nav="blog">Blog</a>
+        <a href="faq.html" data-nav="faq">FAQ</a>
+        <a href="about.html" data-nav="about">About Us</a>
+        <a href="contact.html" data-nav="contact">Contact Us</a>
+        <a href="privacy-policy.html" data-nav="privacy">Privacy Policy</a>
+        <a href="terms.html" data-nav="terms">Terms of Service</a>
+        <a href="disclaimer.html" data-nav="disclaimer">Disclaimer</a>
+      </div>
+      <div class="foot-social">
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.7-.5-5.4c-.3-1-1-1.7-2-2C18.7 4 12 4 12 4s-6.7 0-8.5.6c-1 .3-1.7 1-2 2C1 8.3 1 12 1 12s0 3.7.5 5.4c.3 1 1 1.7 2 2C5.3 20 12 20 12 20s6.7 0 8.5-.6c1-.3 1.7-1 2-2 .5-1.7.5-5.4.5-5.4zM10 15.5v-7l6 3.5-6 3.5z"/></svg></a>
+        <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7.5 8.6L22 22h-6.9l-5.4-6.6L3.4 22H0.4l8-9.2L2 2h7l4.9 6L18 2z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V9c0-.9.3-1.5 1.6-1.5h1.7V4.7C16.5 4.6 15.5 4.5 14.3 4.5c-2.5 0-4.2 1.5-4.2 4.3v2.1H7.4V14h2.7v8h3.4z"/></svg></a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.9 8.4H3.6V20H6.9V8.4zM5.2 3.5c-1.1 0-1.9.8-1.9 1.9 0 1 .8 1.9 1.9 1.9 1.1 0 1.9-.8 1.9-1.9 0-1.1-.8-1.9-1.9-1.9zM20.4 20h-3.3v-6.1c0-1.5-.5-2.5-1.9-2.5-1 0-1.6.7-1.9 1.4-.1.2-.1.6-.1.9V20h-3.3s.1-10.6 0-11.6h3.3v1.6c.4-.7 1.2-1.7 3-1.7 2.2 0 3.8 1.4 3.8 4.5V20z"/></svg></a>
+        <a href="https://telegram.org" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.6 18.6 20c-.2 1-1 1.2-1.8.8l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1L18 6.3c.5-.4-.1-.6-.7-.2L7.1 12.7 2.1 11c-1-.3-1-1 .2-1.5l19.4-7.5c.9-.3 1.6.2 1.2 2.6z"/></svg></a>
+        <a href="https://www.pinterest.com" target="_blank" rel="noopener" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 3 5.9 3 10.2c0 2.6 1.4 4.6 3.5 5.4.3.1.6 0 .7-.4l.3-1.1c.1-.3 0-.5-.2-.7-.6-.7-1-1.6-1-2.9 0-3.4 2.5-6.4 6.6-6.4 3.6 0 5.6 2.2 5.6 5.1 0 3.9-1.7 7.1-4.2 7.1-1.4 0-2.4-1.1-2.1-2.5.4-1.7 1.2-3.5 1.2-4.7 0-1.1-.6-2-1.8-2-1.4 0-2.6 1.5-2.6 3.5 0 1.3.4 2.1.4 2.1s-1.5 6.2-1.7 7.3c-.4 1.7-.1 3.8 0 4 0 .1.2.2.3 0 .1-.1 1.7-2.1 2.2-4 .2-.6 1-3.7 1-3.7.5.9 1.9 1.7 3.4 1.7 4.4 0 7.6-4 7.6-9C21.9 5.6 17.9 2 12 2z"/></svg></a>
+        <a href="https://www.whatsapp.com" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.6.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.6-1.5-.9-2-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4zM12 2C6.5 2 2 6.4 2 11.9c0 1.9.5 3.6 1.4 5.1L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.4 10-9.9S17.5 2 12 2zm0 18c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3C4 14.8 3.5 13.4 3.5 12 3.5 7.3 7.3 3.5 12 3.5S20.5 7.3 20.5 12 16.7 20 12 20z"/></svg></a>
+        <a href="https://www.threads.net" target="_blank" rel="noopener" aria-label="Threads"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 11.4c-.1-3.6-2.1-5.7-5.6-5.7-2.1 0-3.8.9-4.9 2.5l1.7 1.2c.7-1 1.7-1.6 3.1-1.6 1.7 0 2.9.9 3.2 2.5-.6-.1-1.3-.2-2.1-.2-3 0-5.1 1.4-5.1 3.8 0 2 1.7 3.4 4 3.4 2 0 3.4-.9 4.1-2.4.5.5.8 1.2.9 2l1.9-.4c-.2-1.3-.7-2.4-1.5-3.2.2-.6.3-1.3.3-1.9zm-4.9 4.4c-1.2 0-1.9-.6-1.9-1.4 0-1 1-1.6 2.6-1.6.7 0 1.4.1 2 .3-.2 1.7-1.1 2.7-2.7 2.7z"/></svg></a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="footYear">2025</span> TubeSetup. All rights reserved.</span>
+      <span>Made for YouTube Creators ❤</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
+  <span id="toastText"></span>
+</div>
+
+<script>
+window.COMMENT_PACKS = {};
+var COMMENT_PACKS = window.COMMENT_PACKS;
+COMMENT_PACKS.en = {
+  name: 'English', dir: 'ltr',
+  R: {
+    friendly: {
+      positive: {
+        a: ["Thank you so much, this really made my day! 😊", "Aww, thanks a lot, that means the world to me!", "You're so kind, thank you for watching!"],
+        b: ["Hope you stick around for the next video!", "There's plenty more coming, so stay tuned!", "Let me know what you'd like to see next."]
+      },
+      negative: {
+        a: ["Thanks for being honest with me, I really do appreciate it.", "I'm sorry this one wasn't for you.", "Thanks for watching and for sharing how you feel."],
+        b: ["I'm always trying to improve, so tell me what you'd like done differently.", "Hopefully the next video will be more your style.", "If you have a suggestion, I'm all ears."]
+      },
+      question: {
+        a: ["Great question, thanks for asking! 😊", "Love that you asked this!", "Good one! Thanks for bringing it up."],
+        b: ["I'll explain it in more detail in an upcoming video, so keep an eye out!", "Tell me a bit more about your situation and I'll gladly point you in the right direction.", "If the video didn't cover it fully, I'll make sure to cover it next time."]
+      },
+      feedback: {
+        a: ["Thank you for the suggestion!", "Thanks for sharing your thoughts, this is really helpful!", "Thanks for taking the time to write this!"],
+        b: ["I'll definitely keep it in mind for future videos.", "Feedback like this helps me improve.", "Keep the ideas coming!"]
+      },
+      general: {
+        a: ["Thanks for watching and for taking the time to comment! 😊", "Thanks for stopping by!"],
+        b: ["It means a lot to have you here.", "Hope to see you in the next video!"]
+      }
+    },
+    professional: {
+      positive: {
+        a: ["Thank you for the kind feedback; it is much appreciated.", "I appreciate you taking the time to share this.", "Thank you for watching and for the positive words."],
+        b: ["I'm glad the video was useful to you.", "More content like this is on the way.", "Please feel free to suggest topics for future videos."]
+      },
+      negative: {
+        a: ["Thank you for your feedback, and I'm sorry the video didn't meet your expectations.", "I appreciate you sharing your honest opinion.", "Thank you for taking the time to comment."],
+        b: ["I take all feedback seriously and will keep working to improve.", "If you can point out what didn't work, I'll gladly look into it.", "I hope future videos will be more helpful."]
+      },
+      question: {
+        a: ["Thank you for your question.", "That's a relevant question, and I appreciate you raising it.", "Thanks for asking; this is an important point."],
+        b: ["I'll address it in detail in a future video.", "Could you share a bit more context so I can give you a precise answer?", "I'll look into it and follow up with a fuller answer."]
+      },
+      feedback: {
+        a: ["Thank you for your valuable feedback.", "I appreciate your suggestion.", "Thank you for taking the time to share your thoughts."],
+        b: ["I'll take it into account when planning future content.", "Constructive input like this helps me improve.", "I'll review it and see how I can apply it."]
+      },
+      general: {
+        a: ["Thank you for watching and commenting.", "Thanks for your comment."],
+        b: ["I appreciate your support.", "Please stay tuned for more content."]
+      }
+    },
+    funny: {
+      positive: {
+        a: ["Stop it, you're making me blush! 😄", "Okay, this comment just got pinned in my heart. 😎", "My mom said I'm the best too, but you're far more convincing! 😂"],
+        b: ["Free cookies for everyone who watched till the end! 🍪", "Don't tell the algorithm, but you're my favourite viewer today. 😉", "I'd say you have excellent taste. 😄"]
+      },
+      negative: {
+        a: ["Ouch, my feelings just filed a complaint. 😅", "Fair enough, not every video can be everyone's cup of tea! ☕", "Well, you can't win them all, right? 😄"],
+        b: ["I promise to try harder next time.", "Give me another chance and I'll try to win you over!", "Stay for the next one, there might be a plot twist. 😉"]
+      },
+      question: {
+        a: ["Ooh, a question! My favourite kind of comment. 😄", "Great question! I'd answer right away, but I need to ask my cat first. 🐱", "You're asking the real questions here. 😎"],
+        b: ["Short answer: it's complicated. Long answer: next video! 😉", "Stay tuned, the full answer is coming (no cats were harmed).", "Give me a moment to pretend I know everything. 😅"]
+      },
+      feedback: {
+        a: ["Noted! I'll add it to my never-ending to-do list. 📝", "Ooh, a creative idea! You should be my producer. 😂", "Your feedback has reached my very serious committee (of one). 😅"],
+        b: ["No promises, but I'll give it a try. 😉", "I'll try, unless my camera has other plans. 📷", "Stay tuned to see if I pull it off!"]
+      },
+      general: {
+        a: ["Thanks for the comment, you're officially part of the club! 😄", "Comment received, high five! ✋"],
+        b: ["Membership perks include absolutely nothing. 😂", "Come back soon for more shenanigans!"]
+      }
+    },
+    emotional: {
+      positive: {
+        a: ["This honestly means so much to me, thank you from the bottom of my heart. ❤️", "Comments like yours are exactly why I keep creating. Thank you!", "I'm genuinely touched by your words. Thank you. 🙏"],
+        b: ["You make all the hard work feel worth it.", "I'm so grateful to have you here with me.", "Thank you for being part of this journey."]
+      },
+      negative: {
+        a: ["I'm sorry this video let you down, and it honestly matters to me.", "Thank you for telling me honestly, even when it's hard to hear.", "It's not easy to hear, but I'm grateful you said it."],
+        b: ["I care about making videos people enjoy, and I'll keep learning.", "I'm always trying to grow, and feedback like yours helps.", "I hope I can earn your support in the future."]
+      },
+      question: {
+        a: ["Thank you for asking, it means a lot that you're so engaged. ❤️", "I love that you care enough about this to ask.", "Questions like yours show how much you care, and I appreciate it."],
+        b: ["I'll do my best to give you a helpful answer.", "Please keep asking, it helps me create better videos.", "I'll make sure to cover this properly for you."]
+      },
+      feedback: {
+        a: ["Thank you for caring enough to share this with me. ❤️", "I'm really grateful for your honest and thoughtful feedback.", "It means a lot that you want to help me improve."],
+        b: ["I'll do my best to make it happen.", "Viewers like you make this channel better.", "It's a gift to have a community that helps me grow."]
+      },
+      general: {
+        a: ["Thank you for being here, it truly means a lot. ❤️", "I'm grateful for every view and every comment."],
+        b: ["You are what keeps this channel going.", "Thank you for being part of this community."]
+      }
+    },
+    short: {
+      positive: ["Thank you! ❤️", "Thanks a lot, glad you liked it! 😊", "Appreciate it! 🙌", "Thanks for watching!", "That means a lot, thank you!", "You're the best, thanks! 😄"],
+      negative: ["Sorry about that, I'll try to do better.", "Thanks for the honest feedback.", "Noted, thank you for letting me know.", "I appreciate the honesty!", "Fair point, I'll work on it.", "Sorry it missed the mark for you."],
+      question: ["Great question! I'll cover it in a future video.", "Good one! Could you share more details?", "Thanks for asking, stay tuned!", "Good question! I'll look into it.", "Nice question, an answer is coming soon!", "Thanks for asking! More on this soon."],
+      feedback: ["Thanks for the suggestion, noted!", "Great idea, I'll consider it!", "Appreciate the feedback! 🙌", "Thank you, I'll work on it.", "Good point, thanks for sharing!", "Noted! Thanks for the idea."],
+      general: ["Thanks for watching! 😊", "Thanks for the comment! 🙌", "Appreciate you being here!", "Thanks for stopping by!", "Glad you're here!", "Thank you! See you in the next one."]
+    }
+  }
+};
+
+</script>
+<script>
+COMMENT_PACKS.en.X = {
+  lead: {
+    friendly: ["Hey there!", "Hi!", "Hello!", "Hey friend!", "Hi, thanks for stopping by!"],
+    professional: ["Hello,", "Hi there,", "Good day,", "Greetings,", "Hello and thank you,"],
+    funny: ["Hey hey! 👋", "Well hello there! 😄", "Oh hi! 😎", "Ahoy! 🏴‍☠️", "Look who showed up! 😂"],
+    emotional: ["Hi friend,", "Hello, dear viewer,", "Hey, you. ❤️", "Hi there, truly,", "Hello from my heart,"]
+  },
+  close: {
+    friendly: ["Take care!", "Have a great day!", "See you around!", "Thanks again for being here.", "Wishing you a great week!", "Hope you're doing well!"],
+    professional: ["Best regards.", "Kind regards.", "Thank you again.", "Have a great day.", "Wishing you all the best.", "I appreciate your time."],
+    funny: ["Stay awesome! 😎", "Now back to my snacks. 🍿", "That is all, carry on! 😄", "Catch you in the next one! 👋", "Cheers! 🥳", "Over and out! 🫡"],
+    emotional: ["Sending you lots of love. ❤️", "Thank you, truly. 🙏", "You matter to this channel.", "I'm grateful for you.", "Wishing you the very best.", "Take care of yourself. 💛"]
+  },
+  sl: ["Hey!", "Hi!", "Hello!", "Hey there!", "Hi friend!"],
+  st: ["Have a great day!", "Take care!", "See you soon!", "Cheers!", "Thanks again!", "Stay awesome!"]
+};
+</script>
+<script>
+(function(){
+  "use strict";
+  /* ================= Theme ================= */
+  var root = document.documentElement;
+  var lightBtn = document.getElementById('lightBtn');
+  var darkBtn = document.getElementById('darkBtn');
+  function setTheme(mode){
+    if(mode === 'dark'){ root.setAttribute('data-theme','dark'); darkBtn.classList.add('active'); lightBtn.classList.remove('active'); }
+    else { root.removeAttribute('data-theme'); lightBtn.classList.add('active'); darkBtn.classList.remove('active'); }
+    try{ localStorage.setItem('tubesetup-theme', mode); }catch(e){}
+  }
+  var savedTheme = null;
+  try{ savedTheme = localStorage.getItem('tubesetup-theme'); }catch(e){}
+  setTheme(savedTheme === 'dark' ? 'dark' : 'light');
+  lightBtn.addEventListener('click', function(){ setTheme('light'); });
+  darkBtn.addEventListener('click', function(){ setTheme('dark'); });
+
+  /* ================= Footer year + mobile menu ================= */
+  (function(){ var y = document.getElementById('footYear'); if(y) y.textContent = new Date().getFullYear(); })();
+  var menuToggle = document.getElementById('menuToggle');
+  var mobileMenu = document.getElementById('mobileMenu');
+  menuToggle.addEventListener('click', function(){ mobileMenu.classList.toggle('open'); });
+  mobileMenu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ mobileMenu.classList.remove('open'); });
+  });
+  document.getElementById('getStartedBtn').addEventListener('click', function(){
+    var panel = document.getElementById('toolPanel');
+    if(panel) panel.scrollIntoView({behavior:'smooth', block:'start'});
+    else window.location.href = 'index.html#tools';
+  });
+
+  /* ================= Toast + clipboard ================= */
+  var toast = document.getElementById('toast');
+  var toastText = document.getElementById('toastText');
+  function showToast(msg, isError){
+    toastText.textContent = msg;
+    toast.classList.toggle('error', !!isError);
+    toast.classList.add('show');
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(function(){ toast.classList.remove('show'); }, 2200);
+  }
+  function copyText(text){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      return navigator.clipboard.writeText(text).catch(function(){ return legacyCopy(text); });
+    }
+    return legacyCopy(text);
+  }
+  function legacyCopy(text){
+    return new Promise(function(resolve, reject){
+      try{
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly',''); ta.style.position='fixed'; ta.style.opacity='0';
+        document.body.appendChild(ta); ta.select();
+        var ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        ok ? resolve() : reject(new Error('copy failed'));
+      }catch(e){ reject(e); }
+    });
+  }
+
+  /* ================= Small helpers ================= */
+  function pick(arr){ return arr[Math.floor(Math.random() * arr.length)]; }
+  function shuffle(arr){
+    var a = arr.slice();
+    for(var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }
+    return a;
+  }
+  function el(tag, cls, text){
+    var n = document.createElement(tag);
+    if(cls) n.className = cls;
+    if(text != null) n.textContent = text;
+    return n;
+  }
+  function getRadio(name){
+    var c = document.querySelector('input[name="' + name + '"]:checked');
+    return c ? c.value : null;
+  }
+  function langOptions(select, packs, order){
+    var keys = order.filter(function(k){ return packs[k]; });
+    Object.keys(packs).forEach(function(k){ if(keys.indexOf(k) === -1) keys.push(k); });
+    keys.forEach(function(k){
+      var o = document.createElement('option');
+      o.value = k; o.textContent = packs[k].name;
+      select.appendChild(o);
+    });
+  }
+  var ICON_COPY = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 012-2h9"/></svg>';
+  var ICON_CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>';
+
+  /* Keep the active tab visible when the tab bar scrolls sideways on small screens. */
+  (function(){
+    var bar = document.querySelector('.tabs'), cur = document.querySelector('.tab.active');
+    if(bar && cur){ bar.scrollLeft = Math.max(0, cur.offsetLeft - (bar.clientWidth - cur.offsetWidth) / 2); }
+  })();
+
+  /* ================= YouTube Comment Reply Generator ================= */
+  var PACKS = window.COMMENT_PACKS || {};
+  var LANG_ORDER = ['en','hi','ur','ar','es','fr','pt'];
+  var CAT_INFO = {
+    positive: {name:'Positive comment', help:'Warm thank-you replies that invite the viewer back.'},
+    negative: {name:'Negative comment', help:'Calm, respectful replies that take the comment seriously.'},
+    question: {name:'Question', help:'Helpful replies that acknowledge the question.'},
+    feedback: {name:'Feedback or suggestion', help:'Replies that appreciate the idea and show you listened.'},
+    general:  {name:'General comment', help:'Friendly replies for a comment without a clear type.'}
+  };
+
+  /* ---- Keyword lists. They cover every supported language, because the comment
+         can be written in any language regardless of the reply language chosen. ---- */
+  var KW = {
+    pos: [
+      'love','loved','loving','great','amazing','awesome','excellent','fantastic','wonderful','brilliant','perfect','best','nice','good','beautiful','helpful',
+      'thanks','thank','thankyou','thank you','super','cool','superb','incredible','underrated','gem','masterpiece','legend','inspiring','well done','keep it up',
+      'keep going','good job','great job','subscribed','favorite','favourite','epic','so good','life saver','lifesaver','this helped','very helpful','i like','i liked','really like','like this',
+      'बहुत अच्छा','अच्छा','अच्छी','अच्छे','शानदार','बेहतरीन','धन्यवाद','शुक्रिया','मस्त','जबरदस्त','कमाल','लाजवाब','सुपर','पसंद',
+      'bahut accha','bahut acha','accha','acha','achha','achi','mast','zabardast','shandar','badhiya','dhanyavad','shukriya','kamaal','lajawab','behtareen',
+      'بہت اچھا','اچھا','اچھی','شکریہ','زبردست','شاندار','کمال','بہترین','لاجواب','پسند','ماشاءاللہ','جزاک اللہ',
+      'bohat acha','bohat achi','bohot acha','behtreen','mashallah','masha allah','jazakallah',
+      'شكرا','شكراً','رائع','ممتاز','جميل','جيد','مفيد','احسنت','أحسنت','تحفة','روعة','حلو','جزاك الله','ما شاء الله','بارك الله','جميله','رائعه',
+      'gracias','excelente','genial','increible','buenisimo','bueno','buen','mejor','me encanta','encanta','hermoso','perfecto','util','felicidades','crack','maravilloso','fantastico','gran',
+      'merci','super','magnifique','parfait','bravo','bien','bon','meilleur','jadore',"j'adore",'utile','formidable','incroyable','chouette',
+      'obrigado','obrigada','otimo','incrivel','maravilhoso','perfeito','adorei','amei','melhor','bom','parabens','lindo','linda'
+    ],
+    neg: [
+      'hate','hated','worst','bad','terrible','awful','horrible','boring','waste','trash','garbage','useless','stupid','dislike','disappointed','disappointing','clickbait','scam','fake',
+      'wrong','misleading','annoying','sucks','cringe','lame','poor','rubbish','waste of time','unsubscribed','unsubscribe','dont like',"don't like",
+      'बेकार','बकवास','खराब','बुरा','घटिया','फालतू','बोरिंग',
+      'bekar','bekaar','bakwas','bura','ghatiya','faltu','kharab','khrab','time waste',
+      'بکواس','بیکار','برا','خراب','فضول','گھٹیا','بورنگ',
+      'سيء','سيئ','ممل','سخيف','مزعج','فاشل','كذب','ضعيف','مضيعة للوقت','سيئة',
+      'odio','malo','pesimo','aburrido','basura','inutil','peor','decepcion','decepcionante','falso','mentira','estafa','perdida de tiempo','tonto',
+      'nul','nulle','mauvais','ennuyeux','deteste','decevant','arnaque','faux','pire','inutile','catastrophique',
+      'ruim','horrivel','chato','odeio','lixo','enganoso','pior','golpe','pessimo'
+    ],
+    fb: [
+      'you should','you could','you can try','i suggest','suggestion','suggestions','improve','improvement','next time','please make','make a video','make video','can you make','could you make',
+      'would be better','would be great','would love to see','too low','too loud','too quiet','too fast','too slow','too long','too short','cant hear','hard to hear','background noise','advice','recommend','feedback','you might','you may want','maybe you','try to','request',
+      'करना चाहिए','सुझाव','वीडियो बनाओ','वीडियो बनाइए','वीडियो बनाएं','प्लीज वीडियो',
+      'video banao','video banaiye','video banayein','suggestion','karna chahiye','please banao','next video',
+      'ویڈیو بنائیں','ویڈیو بناؤ','مشورہ','کرنا چاہیے','ویڈیو بنائے',
+      'video banayen','video banao','mashwara',
+      'يجب','اقتراح','أقترح','اقترح','نصيحة','ارجو','أرجو','اعمل فيديو','فيديو عن','ياريت','ياليت',
+      'deberias','podrias','sugiero','sugerencia','mejorar','haz un video','haz video','ojala','seria mejor','recomiendo',
+      'devriez','pourriez','ameliorer','faites une video','fais une video','serait mieux','conseil',
+      'deveria','poderia','sugiro','sugestao','melhorar','faz um video','faca um video','seria melhor'
+    ],
+    fbWeak: [
+      'i think','lighting','audio','volume','sound','quality','subtitles','captions','background music','music','awaz','awaaz','आवाज','आवाज़','آواز','الصوت','الجودة','calidad','sonido','son','qualite','qualidade','som'
+    ],
+    qStart: [
+      'how','what','why','when','where','which','who','whom','whose','can','could','does','do','did','is','are','was','will','would','shall',
+      'kaise','kese','kya','kyun','kyu','kab','kahan','kaun','kitna','kitne','kitni','kidhar',
+      'कैसे','क्या','क्यों','कब','कहाँ','कहां','कौन','कितना','कितने','कितनी',
+      'کیا','کیسے','کیوں','کب','کہاں','کون','کتنا','کتنی',
+      'كيف','ماذا','لماذا','متى','اين','أين','هل','كم','ما',
+      'como','cuando','donde','cual','cuales','quien','cuanto','cuantos','puedes','podrias',
+      'comment','pourquoi','quand','quel','quelle','quels','qui','combien','peux','pouvez',
+      'quando','onde','qual','quem','quanto'
+    ],
+    negators: ['not','no','never','dont',"don't",'isnt',"isn't",'wasnt',"wasn't",'cant',"can't",'nahi','nahin','nhi','नहीं','नही','نہیں','نہی','لا','لم','ليس','مش','nunca','ni','pas','jamais','nao','nem'],
+    posEmoji: /[\u2764\u{1F60D}\u{1F970}\u{1F496}\u{1F44F}\u{1F525}\u{1F64C}\u{1F60A}\u{1F44D}\u{1F4AF}\u2728\u{1F929}\u{1F618}\u{1F495}\u{1F499}\u{1F49A}\u{1F49B}\u{1F49C}\u{1F31F}]/gu,
+    negEmoji: /[\u{1F621}\u{1F44E}\u{1F620}\u{1F92E}\u{1F4A9}\u{1F612}\u{1F644}\u{1F624}\u{1F92C}]/gu
+  };
+  function norm(s){
+    return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[\u2018\u2019]/g, "'");
+  }
+  function toks(s){ return norm(s).split(/[^\p{L}\p{N}\p{M}']+/u).filter(Boolean); }
+  var KWN = {};
+  Object.keys(KW).forEach(function(k){
+    if(Array.isArray(KW[k])){
+      var seen = {};
+      KWN[k] = KW[k].map(norm).filter(function(x){ if(seen[x]) return false; seen[x] = true; return true; });
+    }
+  });
+  var NEGSET = {};
+  KWN.negators.forEach(function(n){ NEGSET[n] = true; });
+  var QSET = {};
+  KWN.qStart.forEach(function(n){ QSET[n] = true; });
+  var MILD = {bad:1, boring:1, terrible:1, awful:1, horrible:1, poor:1, lame:1, cringe:1};
+  var GOOD_ADJ = {nice:1, good:1, great:1, beautiful:1, amazing:1, awesome:1, cool:1, lovely:1, wonderful:1};
+
+  /* Count keyword hits. With negCheck, a hit with a negator next to it is returned as "flipped". */
+  function scan(tokens, list, negCheck){
+    var padded = ' ' + tokens.join(' ') + ' ', hits = 0, flipped = 0, flippedMild = 0;
+    list.forEach(function(kw){
+      var pos = padded.indexOf(' ' + kw + ' ');
+      if(pos === -1) return;
+      if(negCheck){
+        var before = padded.slice(0, pos).trim();
+        var ti = before ? before.split(' ').length : 0;
+        var n = kw.split(' ').length;
+        if(NEGSET[tokens[ti - 1]] || NEGSET[tokens[ti + n]] || NEGSET[tokens[ti + n + 1]]){ flipped++; if(MILD[kw]) flippedMild++; return; }
+      }
+      hits++;
+    });
+    return {hits:hits, flipped:flipped, flippedMild:flippedMild};
+  }
+
+  function isQuestion(text, tokens){
+    if(/[?\uFF1F\u061F]/.test(text)) return true;
+    var parts = norm(text).split(/[.!\n\u0964\u06D4]+/);
+    for(var i = 0; i < parts.length; i++){
+      var t = toks(parts[i]);
+      if(!t.length) continue;
+      var first = t[0], second = t[1];
+      if(!QSET[first]) continue;
+      if(first === 'what' && second === 'a') continue;
+      if(first === 'how' && GOOD_ADJ[second]) continue;
+      if((first === 'do' || first === 'does' || first === 'did') && NEGSET[second]) continue;
+      if(first === 'is' || first === 'are' || first === 'was' || first === 'can' || first === 'could' || first === 'will' || first === 'would' || first === 'shall'){
+        if(t.length < 3) continue;
+      }
+      return true;
+    }
+    return false;
+  }
+
+  function analyze(text){
+    var tokens = toks(text);
+    var p = scan(tokens, KWN.pos, true), n = scan(tokens, KWN.neg, true);
+    var pos = p.hits + n.flippedMild * 0.5, neg = n.hits + p.flipped;
+    var emoPos = (text.match(KW.posEmoji) || []).length, emoNeg = (text.match(KW.negEmoji) || []).length;
+    pos += Math.min(emoPos, 2); neg += Math.min(emoNeg, 2);
+    var fb = scan(tokens, KWN.fb, false).hits + scan(tokens, KWN.fbWeak, false).hits * 0.5;
+    var q = isQuestion(text, tokens);
+    var cat;
+    if(neg > 0 && neg > pos && fb < 1) cat = 'negative';
+    else if(fb >= 1) cat = 'feedback';
+    else if(q) cat = 'question';
+    else if(pos > 0) cat = 'positive';
+    else if(neg > 0) cat = 'negative';
+    else cat = 'general';
+    var sentiment = pos > neg ? 'positive' : (neg > pos ? 'negative' : 'neutral');
+    var emoji = null;
+    if(/[\u{1F602}\u{1F923}\u{1F606}\u{1F604}]/u.test(text)) emoji = '\u{1F602}';
+    else if(/[\u2764\u{1F60D}\u{1F970}\u{1F496}\u{1F495}\u{1F618}]/u.test(text)) emoji = '\u2764\uFE0F';
+    else if(/[\u{1F300}-\u{1FAFF}\u2600-\u27BF]/u.test(text)) emoji = '\u{1F64C}';
+    return {cat:cat, sentiment:sentiment, emoji:emoji, q:q};
+  }
+
+  /* ---- Reply composition ---- */
+  var seen = {sig:'', used:{}};
+  function hasPictograph(s){ return /[\u{1F300}-\u{1FAFF}\u2600-\u27BF\u2764]/u.test(s); }
+  function compose(a, tone, lang, text, count){
+    var P = PACKS[lang] || PACKS.en, cat = a.cat, out = [], X = P.X || {};
+    var sig = [lang, tone, cat, a.sentiment, text].join('|');
+    if(seen.sig !== sig){ seen = {sig:sig, used:{}}; }
+    function rnd(arr){ return arr[Math.floor(Math.random() * arr.length)]; }
+    function opt(arr, p){ return arr && arr.length && Math.random() < p ? rnd(arr) + ' ' : ''; }
+    var A, B;
+    if(tone !== 'short'){
+      var R = P.R[tone], aCat = cat;
+      if((cat === 'question' || cat === 'feedback') && a.sentiment !== 'neutral') aCat = a.sentiment;
+      A = R[aCat].a; B = R[cat].b;
+    }
+    /* Random combination of opener + body + closer; anything already shown is skipped, so every
+       click of More / Regenerate gives replies that have not appeared before. */
+    for(var tries = 0; tries < 400 && out.length < count; tries++){
+      var t;
+      if(tone === 'short'){
+        t = opt(X.sl, 0.45) + rnd(P.R.short[cat]) + (X.st && Math.random() < 0.4 ? ' ' + rnd(X.st) : '');
+      } else {
+        t = opt(X.lead && X.lead[tone], 0.5) + rnd(A) + ' ' + rnd(B);
+        var cl = X.close && X.close[tone];
+        if(cl && Math.random() < 0.6) t += ' ' + rnd(cl);
+      }
+      if(seen.used[t]) continue;
+      seen.used[t] = true;
+      if(a.emoji && tone !== 'professional' && cat !== 'negative' && !hasPictograph(t)) t += ' ' + a.emoji;
+      out.push(t);
+    }
+    return {replies:out, dir:P.dir || 'ltr', lang:lang};
+  }
+
+  /* ---- UI ---- */
+  var commentEl = document.getElementById('comment');
+  var commentWrap = document.getElementById('commentWrap');
+  var commentErr = document.getElementById('commentErr');
+  var counter = document.getElementById('counter');
+  var langSel = document.getElementById('lang');
+  var genBtn = document.getElementById('genBtn');
+  var clearBtn = document.getElementById('clearBtn');
+  var regenBtn = document.getElementById('regenBtn');
+  var moreBtn = document.getElementById('moreBtn');
+  var results = document.getElementById('results');
+  var detectRow = document.getElementById('detectRow');
+  var replyList = document.getElementById('replyList');
+  var busy = false;
+  langOptions(langSel, PACKS, LANG_ORDER);
+
+  function readForm(){
+    return {text: commentEl.value.replace(/\s+/g, ' ').trim(), tone: getRadio('rtone'), lang: langSel.value};
+  }
+  function validate(o){
+    var bad = o.text.length < 2;
+    commentWrap.classList.toggle('field-err', bad);
+    commentErr.classList.toggle('show', bad);
+    if(bad) commentEl.focus();
+    return !bad;
+  }
+  function setBusy(on){ busy = on; genBtn.disabled = on; regenBtn.disabled = on; moreBtn.disabled = on; }
+
+  function renderDetect(a){
+    detectRow.innerHTML = '';
+    var badge = el('span', 'detect-badge');
+    badge.appendChild(el('span', 'sw ' + a.cat));
+    badge.appendChild(document.createTextNode('Detected: ' + CAT_INFO[a.cat].name));
+    detectRow.appendChild(badge);
+    if((a.cat === 'question' || a.cat === 'feedback') && a.sentiment !== 'neutral'){
+      detectRow.appendChild(el('span', 'detect-badge', (a.sentiment === 'positive' ? 'Positive' : 'Critical') + ' tone'));
+    }
+    detectRow.appendChild(el('span', 'detect-help', CAT_INFO[a.cat].help));
+  }
+  function renderReplies(r, append){
+    var base = append ? replyList.children.length : 0;
+    if(!append) replyList.innerHTML = '';
+    r.replies.forEach(function(text, i){
+      var card = el('div', 'reply-card');
+      card.style.animationDelay = (i * 0.05) + 's';
+      var p = el('p', 'reply-text', text);
+      p.setAttribute('dir', r.dir); p.setAttribute('lang', r.lang);
+      var btn = el('button', 'reply-copy');
+      btn.type = 'button';
+      btn.innerHTML = ICON_COPY + '<span>Copy</span>';
+      btn.setAttribute('aria-label', 'Copy reply ' + (base + i + 1));
+      function doCopy(){
+        copyText(text).then(function(){
+          showToast('Reply copied!');
+          btn.classList.add('copied'); btn.innerHTML = ICON_CHECK + '<span>Copied</span>';
+          setTimeout(function(){ btn.classList.remove('copied'); btn.innerHTML = ICON_COPY + '<span>Copy</span>'; }, 1600);
+        }).catch(function(){ showToast('Could not copy. Try again', true); });
+      }
+      btn.addEventListener('click', function(e){ e.stopPropagation(); doCopy(); });
+      card.addEventListener('click', function(e){ if(!window.getSelection().toString()) doCopy(); });
+      card.appendChild(p); card.appendChild(btn);
+      replyList.appendChild(card);
+    });
+    if(append && replyList.children[base]) replyList.children[base].scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+  function run(scroll){
+    if(busy) return;
+    var o = readForm();
+    if(!validate(o)) return;
+    setBusy(true);
+    results.classList.remove('hidden');
+    replyList.innerHTML = ''; detectRow.innerHTML = '';
+    var sk = el('div', 'skel-block');
+    for(var i = 0; i < 3; i++) sk.appendChild(el('div', 'skeleton-row'));
+    replyList.appendChild(sk);
+    if(scroll) results.scrollIntoView({behavior:'smooth', block:'start'});
+    setTimeout(function(){
+      var a = analyze(o.text);
+      renderDetect(a);
+      renderReplies(compose(a, o.tone, o.lang, o.text, 4));
+      setBusy(false);
+    }, 380);
+  }
+
+  genBtn.addEventListener('click', function(){ run(true); });
+  regenBtn.addEventListener('click', function(){ run(false); });
+  moreBtn.addEventListener('click', function(){
+    if(busy) return;
+    var o = readForm();
+    if(!validate(o)) return;
+    setBusy(true); moreBtn.classList.add('loading');
+    setTimeout(function(){
+      var a = analyze(o.text), r = compose(a, o.tone, o.lang, o.text, 4);
+      if(r.replies.length){ renderDetect(a); renderReplies(r, true); }
+      else showToast('No more unique replies for this comment. Try another tone.', true);
+      moreBtn.classList.remove('loading'); setBusy(false);
+    }, 250);
+  });
+  commentEl.addEventListener('input', function(){
+    counter.textContent = commentEl.value.length + ' / 1000';
+    commentWrap.classList.remove('field-err'); commentErr.classList.remove('show');
+  });
+  commentEl.addEventListener('keydown', function(e){
+    if((e.ctrlKey || e.metaKey) && e.key === 'Enter'){ e.preventDefault(); run(true); }
+  });
+  clearBtn.addEventListener('click', function(){
+    commentEl.value = ''; counter.textContent = '0 / 1000';
+    commentWrap.classList.remove('field-err'); commentErr.classList.remove('show');
+    results.classList.add('hidden'); replyList.innerHTML = ''; detectRow.innerHTML = '';
+    seen = {sig:'', used:{}};
+    commentEl.focus();
+  });
+  document.querySelectorAll('[data-example]').forEach(function(chip){
+    chip.addEventListener('click', function(){
+      commentEl.value = chip.getAttribute('data-example');
+      counter.textContent = commentEl.value.length + ' / 1000';
+      run(true);
+    });
+  });
+
+  /* Test hook (harmless in production) */
+  window.__commentEngine = {analyze:analyze, compose:compose, packs:PACKS};
+
+})();
+</script>
+</body>
+</html>
